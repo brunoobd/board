@@ -1,4 +1,4 @@
-import { SearchInput } from "@/app/(board)/components/header/search-input";
+import { SearchInput } from "@/app/(board)/_components/header/search-input";
 import { UserButton } from "@/components/header/user-button";
 
 export function Header() {
