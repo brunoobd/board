@@ -1,4 +1,4 @@
-import { Header } from "./header";
+import { Header } from "@/app/(board)/components/header";
 
 export default function BoardLayout({
   children,
