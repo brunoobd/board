@@ -1,9 +1,11 @@
-import { Button } from "@/components/button";
-import { getIssue } from "@/http/get-issue";
-import { MoveLeftIcon, ArchiveIcon, ThumbsUpIcon } from "lucide-react";
-import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { MoveLeftIcon, ArchiveIcon, ThumbsUpIcon } from "lucide-react";
+import { getIssue } from "@/http/get-issue";
+import { Button } from "@/components/button";
 import { IssueCommentList } from "@/app/issues/_components/comment/list";
+import { IssueCommentListSkeleton } from "@/app/issues/_components/comment/list/skeleton";
 
 interface IssuePageProps {
   params: Promise<{ id: string }>;
@@ -68,7 +70,9 @@ export default async function IssuePage({ params }: IssuePageProps) {
         <form />
 
         <div className="mt-3">
-          <IssueCommentList issueId={issue.id} />
+          <Suspense fallback={<IssueCommentListSkeleton />}>
+            <IssueCommentList issueId={issue.id} />
+          </Suspense>
         </div>
       </div>
     </main>
